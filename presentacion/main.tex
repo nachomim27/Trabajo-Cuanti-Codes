@@ -1,0 +1,362 @@
+\documentclass[pdf]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{algorithm,algorithmic}
+\bibliographystyle{apacite}
+
+\title{El mundo de la computación y las ciencias de las matemáticas}
+\author{Alejandro Cerda y Ignacio Morales}
+\date{26 de enero de 2023}
+\usebackgroundtemplate{\includegraphics{fondollenobacan.pdf}}
+\begin{document}
+
+\maketitle
+
+\section{Índice}
+
+
+\begin{frame}{Contenido}
+    
+    \begin{columns}[t]
+        \begin{column}{.5\textwidth}
+            \tableofcontents[sections={1-5}]
+        \end{column}
+        \begin{column}{.5\textwidth}
+            \tableofcontents[sections={6-11}]
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Introducción}
+\section{Introducción}
+
+\begin{columns}[t]
+        \begin{column}{.5\textwidth}
+        
+            Parte I
+
+            \begin{footnotesize}
+            
+            Explicar la nota final de programación
+            en función de:
+
+            - Nota final de Estadística I
+            
+            - Nota final de Métodos Matemáticos III
+            
+            - Nota final de Contabilidad
+            
+            - Sexo del estudiante
+            
+            - Residencia (Vive o no en Stgo.)
+
+            \end{footnotesize}
+            
+        \end{column}
+        \begin{column}{.5\textwidth}
+        
+            Parte II
+
+            \begin{footnotesize}
+            
+            Explicar el promedio de los ramos de Estadística
+            en función de:
+
+            - Carrera
+            
+            - Sexo
+            
+            - Si juega videojuegos multijugador online
+            
+            Si juega videojuegos, entonces se añade:
+
+            - Horas de juego
+
+            - Horas que mira stream/videos de juegos
+
+            - Tipo de contenido que mira
+
+            - Rango máximo alcanzado en Ranked
+            
+            \end{footnotesize}
+            
+        \end{column}
+\end{columns}
+
+
+\end{frame}
+\begin{frame}{Parte I}
+\section{Parte I}
+\begin{footnotesize} 
+La siguiente tabla muestra las estadísticas de los 4 ramos a considerar:
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rllllll}
+  \hline
+  Programación & Estadística & Matemática & Contabilidad \\ 
+  \hline
+  Min.   :1.000   & Min.   :1.798   & Min.   :2.000   & Min.   :2.964  \\ 
+  1st Qu.:4.100   & 1st Qu.:3.570   & 1st Qu.:5.175   & 1st Qu.:4.251  \\ 
+  Median :4.709   & Median :4.160   & Median :5.900   & Median :4.686  \\ 
+  Mean   :4.630   & Mean   :4.121   & Mean   :5.624   & Mean   :4.754  \\ 
+  3rd Qu.:5.341   & 3rd Qu.:4.673   & 3rd Qu.:6.325   & 3rd Qu.:5.072  \\ 
+  Max.   :6.900   & Max.   :6.279   & Max.   :6.800   & Max.   :6.254  \\ 
+   \hline
+\end{tabular}
+\end{table}
+
+Y el siguiente gráfico, la densidad de notas por ramo:
+\begin{center}
+\includegraphics[trim={1cm 1cm 1cm 1cm},width=0.6\linewidth]{rplot01.pdf}
+\end{center}
+Además, el 59\% de los alumnos son hombres y el 71\% vive en Stgo.
+
+\end{footnotesize}
+
+\end{frame}
+\begin{frame}{Parte I}
+
+\begin{center}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 1.4236 & 0.9348 & 1.52 & 0.1323 \\ 
+  notas\_estad & 0.2378 & 0.1496 & 1.59 & 0.1166 \\ 
+  notas\_mateIII & 0.3394 & 0.1627 & 2.09 & 0.0407 \\ 
+  notas\_conta & 0.1222 & 0.2123 & 0.58 & 0.5667 \\ 
+  sexo\_var & -0.4921 & 0.4406 & -1.12 & 0.2679 \\ 
+  r\_santiago & -0.2032 & 0.3980 & -0.51 & 0.6112 \\ 
+  sexo\_var:r\_santiago & 0.4234 & 0.5108 & 0.83 & 0.4100 \\ 
+   \hline
+\end{tabular}
+\end{table}
+\tiny{Multiple R-squared: 0.3046, Adjusted R-squared: 0.2442.
+F-statistic: 5.038 on 6 and 69 DF, p-value: 0.0002462}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Parte I Modelo Final}
+\section{Parte I Modelo Final}
+
+\begin{center}
+\begin{table}[ht]
+\begin{center}
+\begin{tabular}{rrrrr}
+  \hline
+ & Estimate & Std. Error & t value & Pr($>$$|$t$|$) \\ 
+  \hline
+(Intercept) & 1.3083 & 0.6405 & 2.04 & 0.0447 \\ 
+  notas\_estad & 0.2521 & 0.1426 & 1.77 & 0.0813 \\ 
+  notas\_mateIII & 0.4060 & 0.1431 & 2.84 & 0.0059 \\ 
+   \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\tiny{Multiple R-squared: 0.2837, Adjusted R-squared: 0.2641.
+F-statistic: 14.46 on 2 and 73 DF, p-value: 5.139e-06}
+\end{center}
+
+\begin{center}
+
+\[Pr_i = 1.3083 + 0.2521 E_i + 0.4060 M_i + \epsilon_i\]
+\end{center}
+
+\(Pr_i\) = Nota final de programación
+
+\(E_i\) = Nota final de estadística
+
+\(M_i\) = Nota final de matemática
+
+\(R^2\) ajustado de nuestro modelo final: 0.2641
+
+\end{frame}
+\begin{frame}{Parte I Conclusión}
+\section{Parte I Conclusión}
+ \begin{footnotesize}
+            
+            Las variables más eficaces para la predicción de la nota final de programación, son:
+
+            - Nota final de Estadística I
+            
+            - Nota final de Métodos Matemáticos III
+
+            Dentro de las variables que consideramos para nuestro modelo
+            
+            
+
+            \end{footnotesize}
+            \nocite{comuna}
+            \nocite{estrescovid}
+
+\end{frame}
+\begin{frame}{Parte II}
+Estadísticas de los encuestados:
+
+
+\includegraphics[trim={1.5cm 0.5cm 1cm 0},width=0.45\linewidth,scale=1]{carreras.pdf}
+\includegraphics[trim={1.5cm 0.5cm 1cm 0},width=0.45\linewidth,scale=1]{sexo.pdf}
+
+\includegraphics[trim={0.25cm 1cm 0.25cm 1cm},width=\linewidth]{estadistica1_2.pdf}
+\section{Parte II}
+
+\end{frame}
+\begin{frame}{Parte II}
+Horas de juego y stream de los encuestados:
+\vspace{.4cm}
+
+\includegraphics[trim={cm 0cm 0cm 0},width=0.45\linewidth,scale=1]{hjuego.pdf}
+\includegraphics[trim={cm 0cm 0cm 0},width=0.45\linewidth,scale=1]{hstream.pdf}
+
+Elo relativo de los encuestados:
+
+\begin{center}
+\includegraphics[trim={0.25cm cm 0.25cm cm},width=0.8\linewidth]{elo2.pdf}
+\end{center}
+
+\end{frame}
+\begin{frame}
+
+\begin{center}
+\begin{tiny}
+    
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+ \hline
+& Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\
+ \hline
+(Intercept)                                               &  6.8362  &    0.6949 &  9.84 & < 2e-16\\
+sexo\_var &                                                   0.3033  &    0.2021  & 1.50  &0.13346\\
+carreraExterno  &                                          0.3930      &0.2704   &1.45  &0.14607\\
+carreraIC MA    &                                        0.4224   &   0.2904  & 1.45  &0.14583\\
+carreraIC\ ME     &                                        0.0736     & 0.2856  & 0.26  &0.79663\\
+carreraIICG        &                                        0.2709    &  0.2721  & 1.00 & 0.31947\\
+horas\_juegoEntre 15 y 20       &                            -0.1047   &   0.4376  &-0.24 & 0.81089\\
+horas\_juegoEntre 20 y 25     &                              -0.4720  &    0.4158 & -1.14 & 0.25623\\
+horas\_juegoEntre 5 y 10       &                             -0.0707     & 0.3079 & -0.23  &0.81849\\
+horas\_juegoMás de 25                    &                    0.5369    &  0.5424  & 0.99 & 0.32224\\
+horas\_juegoMenos de 5             &                         -0.1765   &   0.3237 & -0.55 & 0.58554\\
+horas\_juegoNo juega online   &                              -2.4048    &  0.6858  &-3.51 & 0.00045\\
+horas\_streamEntre 15 y 20    &                              -1.1203 &     0.5164  &-2.17 & 0.03007\\
+horas\_streamEntre 5 y 10      &                             -0.7635   &   0.3624  &-2.11 & 0.03514\\
+horas\_streamMás de 25            &                          -0.6368 &     0.9090  &-0.70 & 0.48359\\
+horas\_streamMenos de 5                  &                   -1.3738  &    0.3411 & -4.03 & 5.6e-05\\
+contenido para mejorar en el juego &                         -0.5187  &    0.6071  &-0.85 & 0.39293\\
+contenido por diversión               &                      -0.8006    &  0.3983  &-2.01 & 0.04444\\
+contenido un mix de ambas                &                   -0.7533   &   0.4287 &-1.76 & 0.07890\\
+elo\_maximo Elo alto                  &                       -0.6342    & 0.4508  &-1.41  &0.15946\\
+elo\_maximo Elo bajo              &                           -0.8491  &    0.5692  &-1.49 & 0.13579\\
+elo\_maximo Elo medio          &                              -0.8730    &  0.4294  &-2.03 & 0.04204\\
+elo\_maximo Elo medio alto                  &                 -0.3039   &   0.4329 & -0.70 & 0.48267\\
+elo\_maximo Elo medio bajo          &                         -0.7331   &   0.5339  &-1.37  &0.16971\\
+elo\_maximo Introductorio               &                     -0.5534    &  0.9413  &-0.59  &0.55657\\
+elo\_maximoNunca he jugado ranked        &                   -0.7847     & 0.5329  &-1.47  &0.14088\\
+    \hline
+   \end{tabular}
+   \end{table}
+\tiny{Gaussian distribution. Scale= 0.732, Loglik(model)= -191.1 . Chisq= 32.37 on 27 degrees of freedom, p= 0.22  Number of Newton-Raphson Iterations: 4}
+\end{tiny}
+\end{center} 
+
+
+\end{frame}
+\begin{frame}{Parte II Modelo Final}
+
+\begin{center}
+\begin{small}
+\begin{table}[ht]
+\centering
+\begin{tabular}{rrrrr}
+ \hline
+& Estimate & Std. Error & z value & Pr($>$$|$z$|$) \\
+ \hline
+(Intercept)                & 5.5474    & 0.3429& 16.18& <2e-16\\
+sexo\_var                  & 0.3197 &    0.1809  & 1.77& 0.0772\\
+horas\_stream entre 15 y 20 &-1.2425    & 0.5077 &-2.45& 0.0144\\
+horas\_stream entre 5 y 10 & -0.6889   &  0.3519 &-1.96& 0.0503\\
+horas\_stream más de 25   &  -1.1171    & 0.8656& -1.29& 0.1968\\
+horas\_stream menos de 5   & -1.0742    & 0.3386& -3.17& 0.0015\\
+horas\_stream no consume   & -0.8701    & 0.3467 &-2.51& 0.0121\\
+    \hline
+   \end{tabular}
+   \end{table}
+\tiny{Gaussian distribution. Scale=0.796 , Loglik(model)= -199.5. Chisq= 15.49 on 6 degrees of freedom, p= 0.017. AIC=415.0184 , BIC=436.2501 }
+\end{small}
+\end{center}   
+
+\begin{center}
+\begin{tiny}
+\math{Es_i = 5.547 + 0.320Hom_i - 1.243E15y30_i - 0.689E5y10_i - 1.117M25_i - 1.074M5_i - 0.870NC_i + \epsilon_i}
+\end{tiny}
+\end{center}
+
+\begin{small}
+
+\(Es_i\) = Nota final de estadística
+
+\(E15y30_i , E5y10_i , M25_i, M5_i , NC_i\) = Cantidad de horas de stream que consume (V. Categórica)
+
+\(Hom_i\) = dummy que toma el valor 1 si el alumno es hombre
+
+\(AIC\) de nuestro modelo final: 415.0184
+
+\end{small}
+
+\section{Parte II Modelo Final}
+
+\end{frame}
+\begin{frame}{Parte II Conclusión}
+\section{Parte II Conclusión}
+\begin{footnotesize}
+            
+Las variables más utiles para predecir la nota final, dentro de las consideradas, son:
+
+- Horas que el alumno dedica a ver contenido relacionado
+            
+- Sexo del estudiante
+
+            
+Supuestos a considerar:
+
+- Supuesto de distribución normal
+
+- Gente que no juega, no ve contenido de esos juegos
+
+- Estudiantes mantienen su juego, consumo y elo durante el tiempo
+
+            \end{footnotesize}
+
+
+\end{frame}
+\begin{frame}{Conclusión final}
+\section{Conclusión final}
+
+- Importancia de ramos matemáticos frente a las nuevas tecnologías
+
+- Nuevas variables, nuevas explicaciones
+
+
+\end{frame}
+
+\begin{frame}{Referencias}
+\nocite{women}
+\begin{tiny}
+\bibliography{referencias.bib}
+\end{tiny}
+\section{Referencias}
+\end{frame}
+
+
+\end{document}
+
